@@ -25,12 +25,12 @@ my @makefile = (" \n",
                 "DEBUG  = -g\n",
                 "EXE    =  ".$ARGV[0]."\n",
                 " \n",
-                "all: clean \$(EXE)\n",
+                "all: \$(EXE)\n",
                 " \n",
                 "clean:\n",
                 "\trm -f \$(EXE)\n",
                 " \n",
-                $ARGV[0].": \n",
+                $ARGV[0].": main.cpp ".$ARGV[0].".cpp ".$ARGV[0].".h\n",
                 "\t\$(CC) \$(CFLAGS) \$(DEBUG) -o\$(EXE) main.cpp ".$ARGV[0].".cpp ".$ARGV[0].".h\n");
 
 ## File: main.cpp
@@ -47,10 +47,9 @@ my @main = (" \n",
             "    int cnt = 0;\n",
             "    if (argc >= 2)\n",
             "        cnt = atoi(argv[1]);\n",
-            " \n",
             "    do {\n",
             "        ret = ".$ARGV[0]."(cnt);\n",
-            "    while((cnt);\n",
+            "    } while(cnt > 0);\n",
             "    return(ret);\n",
             "}\n");
 
